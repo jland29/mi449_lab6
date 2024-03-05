@@ -7,8 +7,9 @@ title: 11ty Boilerplate
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
+  <title>Alpine.js Lab</title>
   <link rel="stylesheet" href="/styles/screen.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body>
   <nav>
@@ -18,5 +19,19 @@ title: 11ty Boilerplate
     </ul>
   </nav>
     {{ content }}
+    <div x-data="{ 
+      randomName: '',
+
+      names: ['Bobby', 'James', 'Chad', 'Mark', 'Tom', 'Emily', 'Carol', 'Amy', 'Linda', 'Mary'],
+
+      get randomName() {
+        return this.names[Math.floor(Math.random() * this.names.length)]
+      }
+    
+     }">
+      <button x-on:click="randomName = names[Math.floor(Math.random() * names.length)]">Get random name</button>
+ 
+      <h1 x-text="randomName"></h1>
+    </div>
 </body>
 </html>
